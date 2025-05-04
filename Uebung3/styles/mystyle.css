@@ -1,0 +1,41 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.citycard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+header{
+    background-color: rgb(14, 85, 14);
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+.cityname{
+    margin: 0;
+}
+.cityimage img{
+    width; 200px;
+    height:200px;
+    border-radius: 0;
+    object-fit: cover;
+}
+footer
+{
+    text-align: center;
+    padding: 20px;
+    margin: 8px;
+    background-color: rgb(14, 85, 14);
+    color: white;
+
+}
