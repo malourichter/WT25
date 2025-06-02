@@ -5,37 +5,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link href="../uebung4/mystyles.css" rel="stylesheet">
     <title>Title</title>
 </head>
+
 <body>
     <div class="container mt-5">
         <div class="card shadow card-small col-6">
             <div class="card-body">
-    <h1> Teilnehmerin Registrierung</h1>
+                <h1> Teilnehmerin Registrierung</h1>
                 <form>
                     <div class="row">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Vorname" aria-label="First name">
+                            <input type="text" class="form-control" id="firstName" placeholder="Vorname"
+                                aria-label="First name">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Nachname" aria-label="Last name">
+                            <input type="text" class="form-control" id="lastName" placeholder="Nachname"
+                                aria-label="Last name">
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="E-Mail" aria-label="Email">
+                            <input type="text" class="form-control" id="e-mail" placeholder="E-Mail" aria-label="Email">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="IP-Adresse" aria-label="IP-Adresse">
+                            <input type="text" class="form-control" id="ip" placeholder="IP-Adresse"
+                                aria-label="IP-Adresse">
                         </div>
                     </div>
-                    <button type="reset" class="btn btn-secondary mt-3">Abbrechen</button>
-                    <button type="submit" class="btn btn-success mt-3">Registrieren</button>
+                    <button type="cancel" class="btn btn-secondary mt-3">Abbrechen</button>
+                    <button type="submit" class="btn btn-success mt-3" onclick="register()">Registrieren</button>
                 </form>
             </div>
         </div>
     </div>
+    <h3 class="mt-5"> Eingegebene Werte</h3>
+    <ul id="liste" class="list-group">
+
+    </ul>
 </body>
+<script>
+    function register() {
+        event.preventDefault(); // wenn form und submit-Button benötigt werden!!
+        console.log("Button geklickt");
+        let inputFirstName = document.querySelector("#firstName"); //input-Element mit id="firstName"
+        console.log(inputFirstName);
+        let inputFirstNameValue = inputFirstName.value;  //Eigenschaft value
+        console.log( inputFirstNameValue);
+
+        console.log("Button geklickt");
+        let inputLastName = document.querySelector("#lastName"); //input-Element mit id="lastName"
+        let inputLastNameValue = inputLastName.value
+
+        console.log("Button geklickt");
+        let inputEmail = document.querySelector("#e-mail"); //input-Element mit id="e-mail"
+        let inputEmailValue = inputEmail.value
+
+        console.log("Button geklickt");
+        let inputIp = document.querySelector("#ip"); //input-Element mit id="ip"
+        let inputIpValue = inputIp.value
+
+        console.log('inputFirstNameValue : ' , inputFirstNameValue);
+        console.log('inputLastNameValue : ', inputLastNameValue);
+        console.log('inputEmailValue : ', inputEmailValue);
+        console.log('inputIpValue : ', inputIpValue);
+
+    let inputAll = document.querySelectorAll('input')
+    console.log(inputAll)
+    inputOk = true;
+    for(let index = 0; index < inputAll.length; index++)
+    {
+      if(inputAll[index].value == "") {
+          inputOk = false;
+          inputAll[index].classList.add('is-invalid')
+          inputAll[index].classList.remove('is-valid')
+      } else {
+        inputAll[index].classList.add('is-valid')
+        inputAll[index].classList.remove('is-invalid')
+      }
+    }
+
+    for(let input of inputAll) {
+      console.log('inputs : ', input)
+    }
+
+    let liste = document.querySelector('#liste')
+    let h3 = document.querySelector('h3')
+    if(inputOk) {
+      h3.textContent = "Eingegebene Werte"
+      h3.style.color = "black";
+      liste.innerHTML = `<li class="list-group-item"> Vorname: ${inputFirstNameValue}</li>
+                              <li class="list-group-item"> Nachname: ${inputLastNameValue}</li>
+                              <li class="list-group-item"> E-Mail: ${inputEmailValue}</li>
+                              <li class="list-group-item"> IP-Adresse: ${inputIpValue}</li>`
+    }
+    else {
+      h3.textContent = "Alle Werte erforderlich!"
+      h3.style.color = "red";
+    }
+  }
+</script>
 
 </html>
